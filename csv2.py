@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
 
-import re
 import csv
 
-with open("csv_data.csv") as file:
-    csv_line = csv.reader(file, delimiter=',')
-    for line in csv_line:
-        print(line)
+dict = {}
 
-#def import_csv(File):
-    
-
-#def main():
-    
-
-#main()
+with open('csv_data.csv', mode='r') as file:
+    csv_read =csv.reader(file)
+    next(csv_read)
+    for line in csv_read:
+        dict[line[0]] = "The age is: " + line[1]
+    print (dict)
