@@ -1,14 +1,22 @@
 #!/usr/bin/env python3
 
 import csv
+import re
+
+searching = re.search(r'^A\w*', 'Amelia')
+print(searching[0])
 
 dict = {}
 
 with open('csv_data.csv', mode='r') as file:
     csv_read =csv.reader(file)
+    
     next(csv_read)
     for line in csv_read:
-        dict[line[0]] = "The age is: " + line[1]
+        searc = re.search(r'A\w*', line[0])
+        if searc != None:
+            print(searc)
+            dict[searc[0]] = "The age is: " + line[1]
     print (dict)
 
 print(dict.keys())
